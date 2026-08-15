@@ -9,6 +9,8 @@
 > | 발주자 | 명지대학교 융합소프트웨어학부 김상균 교수 |
 > | 보고기관 | 명지대학교 융합소프트웨어학부 |
 > | 작성일자 / 버전 | 2026-06-05 / v1.0 |
+>
+> *편집 주석: 쪽지 위치 검증 반경은 최종 구현값인 **100m** 기준으로 표기를 통일했습니다 (원 보고서 일부에 500m로 기재된 부분을 정정).*
 
 ---
 
@@ -18,7 +20,7 @@
 
 기존 글로벌 맵 서비스의 단편적인 경로 안내 체계와 언어적 미스매치로 인해 국내 거주 외국인의 과반수가 일상적인 보행 환경 구축에 어려움을 겪는 한계를 확인하고, **Pugh Method** 등의 아이디어 평가를 거쳐 **No-Search 태그 필터링**이 결합된 맞춤형 다국어 도보 가이드 플랫폼을 채택하였다. 핵심 KPI로는 다국어 추천 정보 만족도 5점 만점 기준 4.0점 이상을 설정하였다.
 
-특히 본 플랫폼은 단순 경로 매핑을 넘어 코스 반경 500m 이내 사용자 검증 조건이 결합된 **'LBS 쪽지 커뮤니티(히트맵 오버레이)'** 와 **'구글·카카오맵 외부 딥링크 내비게이션 연동'** 을 구축하여 차별화된 사용성을 확보하였다. 최종 평가 결과, 사용자 수용성 테스트(UAT) 만족도 **4.2점**을 기록하여 목표치를 달성하였으며, k6 기반 부하 테스트를 통해 **동시 요청 가용성 100% 및 평균 응답 시간 16.9ms**를 검증하며 시스템의 우수한 안정성과 처리 효율성을 객관적으로 입증하였다.
+특히 본 플랫폼은 단순 경로 매핑을 넘어 코스 반경 100m 이내 사용자 검증 조건이 결합된 **'LBS 쪽지 커뮤니티(히트맵 오버레이)'** 와 **'구글·카카오맵 외부 딥링크 내비게이션 연동'** 을 구축하여 차별화된 사용성을 확보하였다. 최종 평가 결과, 사용자 수용성 테스트(UAT) 만족도 **4.2점**을 기록하여 목표치를 달성하였으며, k6 기반 부하 테스트를 통해 **동시 요청 가용성 100% 및 평균 응답 시간 16.9ms**를 검증하며 시스템의 우수한 안정성과 처리 효율성을 객관적으로 입증하였다.
 
 ---
 
@@ -26,7 +28,7 @@
 
 This report summarizes the development of **"GlobalStep,"** an AI-assisted, multi-language pedestrian trail and restaurant integration platform designed for foreign students and tourists in Korea. The system is built on a decoupled 3-tier architecture featuring a Next.js frontend and a Spring Boot 3.x backend, utilizing the Proj4 coordinate conversion engine and MySQL Spatial Extension indexing to deliver real-time, location-based services (LBS).
 
-Existing mapping applications often present fragmented pathing and language mismatch issues, creating significant informational barriers for foreign residents. Through structured idea evaluations like the Pugh Method, the team finalized a 'No-Search' tag-filtered multilingual trail platform, setting a target key performance indicator (KPI) of ≥ 4.0 out of 5.0 in user information satisfaction. GlobalStep extends basic routing by integrating a 500m proximity-verified 'LBS Note Community' with a heatmap overlay and seamless deep-linking to major external navigation tools (Google/Kakao Maps).
+Existing mapping applications often present fragmented pathing and language mismatch issues, creating significant informational barriers for foreign residents. Through structured idea evaluations like the Pugh Method, the team finalized a 'No-Search' tag-filtered multilingual trail platform, setting a target key performance indicator (KPI) of ≥ 4.0 out of 5.0 in user information satisfaction. GlobalStep extends basic routing by integrating a 100m proximity-verified 'LBS Note Community' with a heatmap overlay and seamless deep-linking to major external navigation tools (Google/Kakao Maps).
 
 In the final evaluations, the platform achieved a User Acceptance Testing (UAT) score of **4.2**, satisfying the project requirements. Furthermore, k6 stress testing demonstrated a **100% success rate with an average system latency of 16.9ms**, validating the robust performance and ultra-low response speed under peak loads.
 
@@ -84,7 +86,7 @@ In the final evaluations, the platform achieved a User Acceptance Testing (UAT) 
 | ④ 반경 기반 동적 경로 서빙 | 현재 위치 반경 3km 이내 산책로 존재 여부를 자동 연산. 없으면 지도 축척을 **전역으로 동적 확장(Zoom-out)** 하여 최적 코스 추천 |
 | ⑤ 단락별 정보 레이어 제공 | 코스 선택 시 하단에 요약 '간이 페이지' 확장 → 추가 인터랙션으로 '상세 페이지' 라우팅 |
 | ⑥ 히트맵 및 데이터 오버레이 | 상세 진입 시 사용자 밀집도 '코스 히트맵' 렌더링. 사이드 컨트롤로 스트릿뷰·맛집·랜드마크 레이어를 개별 오버레이 |
-| ⑦ 위치 검증 기반 LBS 쪽지 | 코스 반경 500m 이내에 있음이 GPS로 검증된 경우에 한해 히트맵 위에 쪽지 생성 가능 |
+| ⑦ 위치 검증 기반 LBS 쪽지 | 코스 반경 100m 이내에 있음이 GPS로 검증된 경우에 한해 히트맵 위에 쪽지 생성 가능 |
 | ⑧ 경험 피드백(리뷰) 시스템 | 이용 완료 사용자를 대상으로 평점 및 텍스트 리뷰 등록 피드백 루프 구동 |
 | ⑨ 글로벌 모빌리티 딥링크 | 구글맵/카카오맵 원클릭 외부 내비게이션 연동 — 현재 위치에서 코스 진입점까지 도보 길찾기 동기화 |
 | ⑩ 로컬 인프라 상세 서빙 | 주변 맛집·랜드마크를 그리드로 제공, 클릭 시 다국어 상세 팝업 및 구글맵 외부 라우팅 |
@@ -95,7 +97,7 @@ In the final evaluations, the platform achieved a User Acceptance Testing (UAT) 
 Next.js 및 React 기반 아키텍처를 바탕으로 회원가입이 없는 Zero-Barrier UX를 구현. 영어 및 중국어(간체/번체) 실시간 다국어 로컬라이제이션 체계를 갖추었으며, 사용자 여정에 따라 '간이 요약'과 '상세 분석' 레이어로 이원화된 인터페이스를 제공. 지도 API 상에 코스 히트맵 오버레이, 구글 스트릿뷰, 주변 인프라 요소를 선택적으로 시각화하는 동적 렌더링 환경 구축.
 
 **백엔드 (Backend)**
-Spring Boot 3.x 프레임워크 환경에서 비즈니스 로직의 트랜잭션 안정성을 보장. 다국어 매핑 데이터 서빙, 코스별 리뷰 관리 시스템을 처리하며, 특히 GPS 좌표 기반으로 사용자가 산책 코스 반경 500m 이내에 위치하는지 검증하여 조건 충족 시에만 위치 기반 쪽지(Note) 생성을 허용하는 **LBS 커뮤니티 통제 API**를 제공.
+Spring Boot 3.x 프레임워크 환경에서 비즈니스 로직의 트랜잭션 안정성을 보장. 다국어 매핑 데이터 서빙, 코스별 리뷰 관리 시스템을 처리하며, 특히 GPS 좌표 기반으로 사용자가 산책 코스 반경 100m 이내에 위치하는지 검증하여 조건 충족 시에만 위치 기반 쪽지(Note) 생성을 허용하는 **LBS 커뮤니티 통제 API**를 제공.
 
 **공간 쿼리 및 데이터 엔진 (Data Engine)**
 Proj4 라이브러리를 통해 서울시 공공데이터의 평면좌표(TM)를 위경도 좌표(WGS84)로 오차 없이 변환·적재. MySQL Spatial Extension의 공간 인덱싱을 활용하여, 사용자 위치 반경 3km 이내 경로 존재 여부를 탐색하고, 데이터 미존재 시 지도 축척을 전역으로 동적 확장(Zoom-out)하여 전체 코스를 재추천하는 예외 처리 및 공간 쿼리 최적화 알고리즘을 구동.
@@ -126,7 +128,7 @@ AWS 클라우드 인프라(Amazon EC2, RDS, S3)와 GitHub Actions CI/CD를 중�
 대량의 연속된 트랙 좌표 데이터(Polyline) 렌더링 시 발생하는 클라이언트 측 병목을 해결하기 위해 프론트엔드 데이터 경량화 로직을 도입하였다. 또한 MySQL Spatial Extension의 공간 인덱싱을 적용하여 **사용자 위치 반경 3km 내 경로 검색 및 랭킹 연산 시간을 1초 미만**으로 단축하며 시스템 성능을 최적화하였다.
 
 ### 4. 피드백 기반의 기능 고도화 및 사용자 리뷰 반영
-개발 중기 및 사용자 리뷰 단계에서 도출된 외국인 사용자의 실제 니즈를 바탕으로 핵심 기능을 대폭 확장하였다. 텍스트 검색 한계를 극복한 'No-Search 태그 및 간이/상세 이원화 레이어 UI'를 도입하였으며, 코스 반경 500m 이내 위치 검증 조건이 결합된 'LBS 쪽지 커뮤니티(히트맵 오버레이)' 및 '구글·카카오맵 외부 딥링크 내비게이션 연동' 기능을 추가하여 서비스의 실용성과 가독성을 획기적으로 개선하였다.
+개발 중기 및 사용자 리뷰 단계에서 도출된 외국인 사용자의 실제 니즈를 바탕으로 핵심 기능을 대폭 확장하였다. 텍스트 검색 한계를 극복한 'No-Search 태그 및 간이/상세 이원화 레이어 UI'를 도입하였으며, 코스 반경 100m 이내 위치 검증 조건이 결합된 'LBS 쪽지 커뮤니티(히트맵 오버레이)' 및 '구글·카카오맵 외부 딥링크 내비게이션 연동' 기능을 추가하여 서비스의 실용성과 가독성을 획기적으로 개선하였다.
 
 ---
 
@@ -184,7 +186,7 @@ AWS 클라우드 인프라(Amazon EC2, RDS, S3)와 GitHub Actions CI/CD를 중�
 | 10 | 구글 스트릿뷰 동적 연동 | 설계+구현 | 하 | 중 | ◯ | ◯ |
 | 11 | 주변 맛집 정보 레이어 매핑 | 설계+구현 | 중 | 중 | ◯ | ◯ |
 | 12 | 로컬 랜드마크 레이어 매핑 | 설계+구현 | 중 | 중 | ◯ | ◯ |
-| 13 | 500m 위치 검증 쪽지 생성 | 설계+구현 | **상** | **상** | ◯ | ◯ |
+| 13 | 100m 위치 검증 쪽지 생성 | 설계+구현 | **상** | **상** | ◯ | ◯ |
 | 14 | 코스 경험 피드백(리뷰) 시스템 | 설계+구현 | 중 | 중 | ◯ | ◯ |
 | 15 | 카카오맵·구글맵 딥링크 연동 | 설계+구현 | 중 | 중 | ◯ | ◯ |
 | 16 | 비인증 쿠키 어뷰징 감지 필터 | 설계+구현 | 중 | 하 | ◯ | ◯ |
@@ -202,6 +204,6 @@ AWS 클라우드 인프라(Amazon EC2, RDS, S3)와 GitHub Actions CI/CD를 중�
 | [1] | 개념설계보고서 | 가중순위비교법·Pugh Method를 통한 아이디어 선정 과정, Top-3 추천 만족도 KPI 설정, 기능/부품 설계와 개발 난이도 평가, Zero-Barrier UX 구조 기획 |
 | [2] | 상세설계보고서 | Proj4 기반 TM→WGS84 좌표 변환 엔진 구조, MySQL Spatial 스키마, Next.js·Spring Boot API 설계, 반경 3km 공간 쿼리 최적화 로직, 10단계 서비스 플로우, 클래스 다이어그램 |
 | [3] | 시험 계획보고서 | UAT 목적·참가자 규모·만족도 목표치, 현장 GPS 트래킹 대조 테스트, k6 부하 시뮬레이션 설계 및 데이터 수집·분석 절차 |
-| [4] | 제작 보고서 | 3-Tier 아키텍처 구성, Polyline 경량화 렌더링 기법, 500m 위치 검증 LBS 쪽지 알고리즘, 공간 인덱싱 및 외부 API 장애 대응용 자산 캐싱 |
+| [4] | 제작 보고서 | 3-Tier 아키텍처 구성, Polyline 경량화 렌더링 기법, 100m 위치 검증 LBS 쪽지 알고리즘, 공간 인덱싱 및 외부 API 장애 대응용 자산 캐싱 |
 | [5] | 중간 발표 자료 | 시장조사·통계청 자료 기반 언어 장벽(43.4%) 및 정보 소외 문제, 산책로+주변 다국어 인프라 결합 니즈 설문 결과, No-Search 태그 필터링 인터페이스 |
 | [6] | 최종 발표 자료 | k6 부하 테스트 가용성 100%·평균 16.9ms, AWS 클라우드 인프라 아키텍처, 구글·카카오맵 딥링크 구현 사례, Zoom-out 예외 처리 로직 추가 과정 |
